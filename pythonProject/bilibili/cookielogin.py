@@ -55,12 +55,12 @@ with open('抽奖地址.text', 'r', encoding='utf-8') as f:
 
             # 转到抽奖地址
             driver.get(url)
-            time.sleep(3)
+            time.sleep(random.randint(3, 5))
             # 鼠标移动到头像上并停留5s
             touxiang = driver.find_element(By.CSS_SELECTOR,
                                            '#app > div.content > div > div > div.bili-dyn-item__main > div.bili-dyn-item__avatar > div > div > img')
             ActionChains(driver).move_to_element(touxiang).perform()
-            time.sleep(3)
+            time.sleep(random.randint(3, 5))
             # 判断是否关注
             # yiguanzhu = driver.find_element(By.CSS_SELECTOR,'body > div.bili-user-profile > div > div > div.bili-user-profile-view__info > div.bili-user-profile-view__info__footer > div.bili-user-profile-view__info__button.follow.checked')
             guanzhu = driver.find_element(By.CSS_SELECTOR,
@@ -70,7 +70,7 @@ with open('抽奖地址.text', 'r', encoding='utf-8') as f:
             try:
                 if guanzhu.text == '关注':
                     guanzhu.click()
-                    time.sleep(1)
+                    time.sleep(random.randint(2, 3))
                 ltguanzhu = driver.find_element(By.CLASS_NAME, 'dyn-orig-author__right')
                 if ltguanzhu.text == '关注':
                     ltguanzhu.click()
@@ -87,9 +87,9 @@ with open('抽奖地址.text', 'r', encoding='utf-8') as f:
             #
             # # 等待一定时间，使得页面加载完毕
             # time.sleep(1)
-            time.sleep(1)
+            time.sleep(random.randint(2, 3))
             driver.execute_script("window.scrollBy(0, 300)")
-            time.sleep(2)
+            time.sleep(random.randint(2, 3))
             # 输入框
             inputbox = driver.find_element(By.XPATH,
                                            '//*[@id="app"]/div[2]/div/div/div[2]/div[2]/div/div[3]/div[2]/textarea')
@@ -108,11 +108,11 @@ with open('抽奖地址.text', 'r', encoding='utf-8') as f:
             except:
                 pass
 
-            time.sleep(1.5)
+            time.sleep(random.randint(2, 3))
             # 预约
             try:
                 yuyue = driver.find_element(By.CLASS_NAME, 'uncheck').click()
-                time.sleep(2)
+                time.sleep(random.randint(2, 3))
 
             except:
                 pass
@@ -122,16 +122,16 @@ with open('抽奖地址.text', 'r', encoding='utf-8') as f:
             if not zhuanfa.is_selected():
                 # 如果未被选中，则点击它以勾选
                 zhuanfa.click()
-            time.sleep(2)
+            time.sleep(random.randint(2, 3))
 
             # 发送文本
             lst = ['答案大所大所多', '谢谢自己万岁', '我中了', '给我中!']
             inputbox.click()
-            time.sleep(1)
+            time.sleep(random.randint(1, 2))
             inputbox.send_keys(lst[random.randint(0, 3)])
-            time.sleep(1.5)
+            time.sleep(random.randint(1, 2))
             driver.find_element(By.CLASS_NAME, 'comment-submit').click()
-            time.sleep(2)
+            time.sleep(random.randint(1, 2))
             cont += 1
 
             # 设置浏览器滚动条操作模拟
