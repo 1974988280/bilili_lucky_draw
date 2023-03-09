@@ -1,9 +1,12 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
-from msedge.selenium_tools import EdgeOptions, Edge
+from selenium.webdriver import Edge, EdgeOptions
 import os
 
+script_dir = os.path.dirname(os.path.abspath(__file__))
+date_file_0 = os.path.join(script_dir, '抽奖网址0.text')
+date_file_1 = os.path.join(script_dir, '抽奖地址1.text')
 options = EdgeOptions()
 options.add_argument('--headless')  # 不显示浏览器界面
 options.add_argument('--disable-gpu')  # 禁用 GPU 加速，解决一些兼容性问题
@@ -30,10 +33,10 @@ a_href = a_element.get_attribute('href')
 first1 = li_tags[0].text
 
 if '近期开奖' in first1:
-    with open('抽奖网址.text', mode='w', encoding='utf-8') as f:
+    with open(date_file_0, mode='w', encoding='utf-8') as f:
         f.write(a_href)
 else:
-    with open('抽奖网址.text', mode='w', encoding='utf-8') as f:
+    with open(date_file_0, mode='w', encoding='utf-8') as f:
         f.write("没有近期开奖")
 
 # 输出每个 <li> 元素的文本内容

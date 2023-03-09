@@ -13,7 +13,8 @@ script_dir = os.path.dirname(os.path.abspath(__file__))
 # date_file_0 = os.path.join(script_dir, '抽奖网址0.text')
 # date_file_1 = os.path.join(script_dir, '抽奖地址1.text')
 date_file_cont = os.path.join(script_dir, 'cont_delete.text')
-date_file_json = os.path.join(script_dir, 'jsoncookie1.json')
+
+date_file_json = os.path.join(script_dir, 'jsoncookie.json')
 options = EdgeOptions()
 
 # 配置浏览器设置
@@ -66,7 +67,7 @@ try:
             time.sleep(2)
             js_script = "window.scrollBy(0, -1000);"
             driver.execute_script(js_script)
-            if cont_list % 11 == -1:
+            if cont_list % 11 == -1 :
                 cont_list = 0
 
 except:
